@@ -74,10 +74,10 @@ def main():
     while True:
         client, client_address = transport_socket.accept()
         try:
-            message_from_cient = get_message(client)
-            print(message_from_cient)
+            message_from_client = get_message(client)
+            print(message_from_client)
 
-            response = proc_client_message(message_from_cient)
+            response = proc_client_message(message_from_client)
             send_message(client, response)
             client.close()
         except (ValueError, json.JSONDecodeError):
