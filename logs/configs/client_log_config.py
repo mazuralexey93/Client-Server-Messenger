@@ -13,7 +13,7 @@ import os
 # Подготовка имени файла
 sys.path.append('../')
 PATH = os.path.dirname(os.path.abspath(__file__))
-PATH = os.path.join(PATH, 'client.log')
+PATH = os.path.join(PATH, '../client.log')
 
 # Формат сообщений: "<дата-время> <уровень_важности> <имя_модуля> <сообщение>"
 c_formatter = logging.Formatter('%(asctime)-27s %(levelname)-12s %(filename)-24s %(message)s')
