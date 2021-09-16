@@ -14,3 +14,18 @@ class ReqFieldMissingError(Exception):
         return f'В принятом словаре отсутствует обязательное поле {self.missing_field}.' \
                f' Проверьте, все ли поля переданы.'
 
+
+class IncorrectDataRecievedError(Exception):
+    """
+    Исключение: в сокет пришли некорректные данные
+    """
+    def __str__(self):
+        return 'Принято некорректное сообщение. $%@^D!!**! <3'
+
+
+class NonDictInputError(Exception):
+    """
+    Исключение: Аргумент функции должен быть словарём.
+    """
+    def __str__(self):
+        return 'Аргумент функции должен быть словарём. Проверьте тип данных аргументов.'

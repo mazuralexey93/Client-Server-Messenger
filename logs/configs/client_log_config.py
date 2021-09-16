@@ -45,4 +45,3 @@ if __name__ == '__main__':
     Client_logger.warning('Предупреждение!')
     Client_logger.error('Где-то ошибка!!')
     Client_logger.critical('Где-то БОЛЬШАЯ ошибка!!!')
-

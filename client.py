@@ -4,6 +4,7 @@ import sys
 import json
 import time
 import logging
+import logs.configs.client_log_config
 
 from common.vars import *
 from common.utils import *
@@ -13,7 +14,7 @@ from errors import ReqFieldMissingError
 Client_logger = logging.getLogger('client')
 
 
-def declare_presence(account_name='Guest1'):
+def declare_presence(account_name='Guest'):
     """
     Генерирует запрос о присутствии клиента Oneline
     EVENT == presence
