@@ -1,13 +1,20 @@
+import argparse
 import socket
 import sys
 import json
 import time
+import logging
+import logs.configs.client_log_config
 
 from common.vars import *
 from common.utils import *
+from errors import ReqFieldMissingError
+
+#  Создаем Logger с настроенным конфигом
+Client_logger = logging.getLogger('client')
 
 
-def declare_presense(account_name='Guest'):
+def declare_presence(account_name='Guest'):
     """
     Генерирует запрос о присутствии клиента Oneline
     EVENT == presence
@@ -23,6 +30,8 @@ def declare_presense(account_name='Guest'):
 
         }
     }
+    #  Пишем в лог
+    Client_logger.debug(f'Пользователь {account_name} теперь онлайн: отправил сообщение о({PRESENCE})')
     return client_data
 
 
@@ -35,47 +44,67 @@ def proc_answer(message):
     :param message:
     :return:
     """
-
+    Client_logger.debug(f'Обработка сообщения от сервера: {message}')
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return '200 : OK'
         return f'400 : {message[ERROR]}'
-    raise ValueError
+    raise ReqFieldMissingError(RESPONSE)
+
+
+def create_arg_parser():
+    """
+    парсер аргументов коммандной строки, для разбора переданных параметров
+    :return:
+    """
+    parser = argparse.ArgumentParser(description='Обработка параметров запуска')
+    parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
+    parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
+    return parser
 
 
 def main():
     """
     Применяем параметры для клиента аналогично серверу
      Наример, client.py -a 192.168.0.1 -p 8008
+     Подгружаем параметры командной строки из парсера
+     Проверяем параметры, при успешной попытке, равно как и при ошибке, пишем в логгер
     :return:
     """
-    try:
-        server_address = sys.argv[1]
-        server_port = int(sys.argv[2])
-        if server_port < 1024 or server_port > 65535:
-            raise ValueError
-    except IndexError:
-        server_address = DEFAULT_IP_ADDRESS
-        server_port = DEFAULT_PORT
-    except ValueError:
-        print('Укажите порт числом от 1024 до 65535.')
+    parser = create_arg_parser()
+    namespace = parser.parse_args(sys.argv[1:])
+    server_address = namespace.addr
+    server_port = namespace.port
+
+    if server_port < 1024 or server_port > 65535:
+        Client_logger.critical(f'Клиент пытается подключиться с недопустимого номера порта: {server_port}.'
+                               f'Диапазон адресов от 1024 до 65535. Подключение завершается...')
         sys.exit(1)
+
+    Client_logger.info('fЗапущен клиент с парамертами: '
+                       f'адрес сервера: {server_address}, порт: {server_port}')
 
     """
     Инициализируем сокет, отправляем серверу сообщение о присутствии, 
     Хотим получит ответ от сервера
+    Ответ пишем в логгер
     """
-
-    transport_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    transport_socket.connect((server_address, server_port))
-    message_to_server = declare_presense()
-    send_message(transport_socket, message_to_server)
     try:
+        transport_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        transport_socket.connect((server_address, server_port))
+        message_to_server = declare_presence()
+        send_message(transport_socket, message_to_server)
         answer = proc_answer(get_message(transport_socket))
+        Client_logger.info(f'Принят ответ от сервера {answer}')
         print(answer)
-    except \
-            (ValueError, json.JSONDecodeError):
-        print('Не удалось декодировать сообщение сервера.')
+    except (ValueError, json.JSONDecodeError):
+        Client_logger.error('Не удалось декодировать сообщение сервера.')
+    except ReqFieldMissingError as missing_field_error:
+        Client_logger.error(f'В ответе сервера отсутствует необходимое поле: '
+                            f'{missing_field_error.missing_field}')
+    except ConnectionRefusedError:
+        Client_logger.critical(f'Не удалось подключиться к серверу {server_address}:{server_port}, '
+                               f'В подключении отказано.')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,5 @@
+2021-09-15 02:38:17,821     INFO         server_log_config.py     Важная? информация
+2021-09-15 02:38:17,823     DEBUG        server_log_config.py     Отладочное сообщение
+2021-09-15 02:38:17,823     WARNING      server_log_config.py     Предупреждение!
+2021-09-15 02:38:17,823     ERROR        server_log_config.py     Где-то ошибка!!
+2021-09-15 02:38:17,823     CRITICAL     server_log_config.py     Где-то БОЛЬШАЯ ошибка!!!
