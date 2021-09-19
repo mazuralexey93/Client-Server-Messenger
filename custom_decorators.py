@@ -28,14 +28,9 @@ def log(func):
         """ функция-обертка """
         res = func(*args, **kwargs)
         """ искомая функция """
-        # if sys.argv[0].find('client') == -1:
-        #     func.__module__ = 'server.py'
-        # else:
-        #     func.__module__ = 'client.py'
-        #
         Universal_logger.debug(f'Вызвана функция {func.__name__} c параметрами {args}, {kwargs}. '
                                f'Вызов из модуля {func.__module__}. '
-                               f'Вызов из функции {inspect.stack()[1][3]}')
+                               f'Вызов из функции {inspect.stack()[1][3]}', stacklevel=2)
         return res
 
     return wrapper
@@ -50,6 +45,7 @@ class Log:
             """ искомая функция """
             Universal_logger.debug(f'Вызвана функция {func.__name__} c параметрами {args}, {kwargs}. '
                                    f'Вызов из модуля {func.__module__}. '
-                                   f'Вызов из функции {inspect.stack()[1][3]}')
+                                   f'Вызов из функции {inspect.stack()[1][3]}', stacklevel=2)
+
             return res
         return wrapper

@@ -15,7 +15,6 @@ from custom_decorators import log, Log
 Client_logger = logging.getLogger('client')
 
 
-
 @Log()
 def declare_presence(account_name='Guest'):
     """
@@ -36,7 +35,6 @@ def declare_presence(account_name='Guest'):
     #  Пишем в лог
     Client_logger.debug(f'Пользователь {account_name} теперь онлайн: отправил сообщение о({PRESENCE})')
     return client_data
-
 
 
 @Log()
@@ -67,7 +65,6 @@ def create_arg_parser():
     parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
     parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
     return parser
-
 
 
 def main():
