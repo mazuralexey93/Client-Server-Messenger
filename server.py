@@ -6,12 +6,14 @@ import logs.configs.server_log_config
 
 from common.vars import *
 from common.utils import *
+from custom_decorators import log
 from errors import IncorrectDataRecievedError
 
 #  Создаем Logger с настроенным конфигом
 Server_logger = logging.getLogger('server')
 
 
+@log
 def proc_client_message(message):
     """
     Обрабатывает сообщения от клиента
@@ -34,6 +36,7 @@ def proc_client_message(message):
         }
 
 
+@log
 def create_arg_parser():
     """
     парсер аргументов коммандной строки, для разбора переданных параметров
@@ -45,6 +48,7 @@ def create_arg_parser():
     return parser
 
 
+@log
 def main():
     """
     явно указывать порт и ip-адрес можно используя параметры -p и -a

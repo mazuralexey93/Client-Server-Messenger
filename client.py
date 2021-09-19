@@ -9,11 +9,13 @@ import logs.configs.client_log_config
 from common.vars import *
 from common.utils import *
 from errors import ReqFieldMissingError
+from custom_decorators import log
 
 #  Создаем Logger с настроенным конфигом
 Client_logger = logging.getLogger('client')
 
 
+@log
 def declare_presence(account_name='Guest'):
     """
     Генерирует запрос о присутствии клиента Oneline
@@ -35,6 +37,7 @@ def declare_presence(account_name='Guest'):
     return client_data
 
 
+@log
 def proc_answer(message):
     """
     Обрабатывает сообщения от сервера
@@ -52,6 +55,7 @@ def proc_answer(message):
     raise ReqFieldMissingError(RESPONSE)
 
 
+@log
 def create_arg_parser():
     """
     парсер аргументов коммандной строки, для разбора переданных параметров
@@ -63,6 +67,7 @@ def create_arg_parser():
     return parser
 
 
+@log
 def main():
     """
     Применяем параметры для клиента аналогично серверу
