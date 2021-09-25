@@ -1,5 +1,7 @@
 import json
 from common.vars import *
+from custom_decorators import log
+from errors import NonDictInputError, IncorrectDataRecievedError
 
 """
 Общие функции для клиента и для сервера
@@ -7,6 +9,7 @@ from common.vars import *
 """
 
 
+@log
 def get_message(sock):
     """
     Принимает и декодирует сообщение
@@ -22,10 +25,11 @@ def get_message(sock):
         response = json.loads(json_response)
         if isinstance(response, dict):
             return response
-        raise ValueError
-    raise ValueError
+        raise IncorrectDataRecievedError
+    raise IncorrectDataRecievedError
 
 
+@log
 def send_message(sock, message):
     """
     Кодирует и отправляет сообщение
@@ -34,7 +38,8 @@ def send_message(sock, message):
     :param message:
     :return:
     """
-
+    if not isinstance(message, dict):
+        raise NonDictInputError
     json_message = json.dumps(message)
     encoded_message = json_message.encode(ENCODING)
     sock.send(encoded_message)

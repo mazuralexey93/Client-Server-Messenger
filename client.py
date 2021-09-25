@@ -15,7 +15,7 @@ from custom_decorators import log, Log
 Client_logger = logging.getLogger('client')
 
 
-@Log()
+@log
 def declare_presence(account_name='Guest'):
     """
     Генерирует запрос о присутствии клиента Oneline
@@ -37,7 +37,7 @@ def declare_presence(account_name='Guest'):
     return client_data
 
 
-@Log()
+@log
 def proc_answer(message):
     """
     Обрабатывает сообщения от сервера
@@ -55,7 +55,7 @@ def proc_answer(message):
     raise ReqFieldMissingError(RESPONSE)
 
 
-@Log()
+@log
 def create_arg_parser():
     """
     парсер аргументов коммандной строки, для разбора переданных параметров

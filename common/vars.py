@@ -1,6 +1,6 @@
 """ Константы """
 
-DEFAULT_PORT = 8777
+DEFAULT_PORT = 7777
 
 DEFAULT_IP_ADDRESS = '127.0.0.1'
 
@@ -20,3 +20,6 @@ ACCOUNT_NAME = 'account_name'
 PRESENCE = 'presence'
 RESPONSE = 'response'
 ERROR = 'error'
+SENDER = 'sender'
+MESSAGE = 'message'
+MESSAGE_TEXT = 'mess_text'
