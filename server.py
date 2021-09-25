@@ -4,9 +4,7 @@ import socket
 import sys
 import logging
 import time
-
 import logs.configs.server_log_config
-
 from common.vars import *
 from common.utils import *
 from custom_decorators import log
@@ -61,7 +59,10 @@ def create_arg_parser():
     parser = argparse.ArgumentParser(description='Обработка параметров запуска')
     parser.add_argument('-a', default='', nargs='?')
     parser.add_argument('-p', default=DEFAULT_PORT, type=int, nargs='?')
-    return parser
+    namespace = parser.parse_args(sys.argv[1:])
+    listen_address = namespace.a
+    listen_port = namespace.p
+    return listen_address, listen_port
 
 
 def main():
@@ -76,15 +77,7 @@ def main():
     clients = []
     messages = []
 
-    # списки для модуля select
-    recv_lst = []
-    send_lst = []
-    err_lst = []
-
-    parser = create_arg_parser()
-    namespace = parser.parse_args(sys.argv[1:])
-    listen_address = namespace.a
-    listen_port = namespace.p
+    listen_address, listen_port = create_arg_parser()
 
     if listen_port < 1024 or listen_port > 65535:
         Server_logger.critical(f'Сервер запускается с недопустимого номера порта: {listen_port}.'
@@ -113,6 +106,10 @@ def main():
             Server_logger.info(f'Соедениние с клиентом {client_address} установлено.')
             clients.append(client)
 
+        # списки для модуля select
+        recv_lst = []
+        send_lst = []
+        err_lst = []
         """ Проверяем наличие ждущих клиентов. """
         try:
             if clients:
@@ -127,9 +124,8 @@ def main():
         if recv_lst:
             for message_from_client in recv_lst:
                 try:
-                    proc_client_message(get_message(
-                        message_from_client),
-                        messages, message_from_client)
+                    proc_client_message(get_message(message_from_client),
+                                        messages, message_from_client)
                 except:
                     Server_logger.info(f'Клиент {message_from_client.getpeername()} '
                                        f' отключился от сервера.')

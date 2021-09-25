@@ -20,8 +20,11 @@ def message_from_server(message):
     """ Функция, обрабатывающая сообщения других пользователей"""
     if EVENT in message and message[EVENT] == MESSAGE \
             and SENDER in message and MESSAGE_TEXT in message:
-        Client_logger.info(f'Получено сообщение от пользователя'
-                           f'{message[SENDER]}:'
+        print((f'Получено сообщение от пользователя '
+               f'{message[SENDER]}: '
+               f'{message[MESSAGE_TEXT]}'))
+        Client_logger.info(f'Получено сообщение от пользователя '
+                           f'{message[SENDER]}: '
                            f'{message[MESSAGE_TEXT]}')
     else:
         Client_logger.error(f'Получено некорректное сообщение от сервера: {message}')
@@ -137,7 +140,8 @@ def main():
         send_message(transport_socket, message_to_server)
         answer = proc_answer(get_message(transport_socket))
         Client_logger.info(f'Установлено собединение. Принят ответ от сервера {answer}')
-        print(answer)
+        print(f'Установлено соединение с сервером.')
+        # print(answer)
     except (ValueError, json.JSONDecodeError):
         Client_logger.error('Не удалось декодировать сообщение сервера.')
         sys.exit(1)

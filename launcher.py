@@ -7,7 +7,7 @@ while True:
     mode = input('Выберите подходящее действие:'
                  ' q = выход'
                  ' s - запустить сервер и клиентов,'
-                 ' x - закрыть все окна: ')
+                 ' e - закрыть все окна: ')
 
     if mode.lower() == 'q':
         break
@@ -20,7 +20,7 @@ while True:
         for i in range(5):
             process_list.append(subprocess.Popen('python client.py -m listen',
                                                  creationflags=subprocess.CREATE_NEW_CONSOLE))
-    elif mode.lower() == 'x':
+    elif mode.lower() == 'e':
         while process_list:
             process_to_delete = process_list.pop()
             process_to_delete.kill()
