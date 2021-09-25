@@ -156,3 +156,53 @@
 2021-09-25 19:08:55,884     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
 2021-09-25 19:08:55,884     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
 2021-09-25 19:08:55,885     INFO         client.py                Принят ответ от сервера 200 : OK
+2021-09-25 20:46:34,501     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:46:34,562     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:46:34,564     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:46:34,566     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=496, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63045), raddr=('127.0.0.1', 7777)>, {'event': 'presence', 'time': 1632591994.562965, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:46:34,598     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=496, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 63045), raddr=('127.0.0.1', 7777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:46:34,598     DEBUG        client.py                Обработка сообщения от сервера: {'response': 400, 'error': 'Bad Request'}
+2021-09-25 20:46:34,610     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 400, 'error': 'Bad Request'},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:46:34,611     INFO         client.py                Установлено собединение. Принят ответ от сервера 400 : Bad Request
+2021-09-25 20:48:41,695     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:48:41,698     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:48:41,699     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:48:41,699     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=372, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59820), raddr=('127.0.0.1', 5777)>, {'event': 'presence', 'time': 1632592121.6988091, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:48:42,701     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=372, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59820), raddr=('127.0.0.1', 5777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:48:42,701     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-25 20:48:42,701     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:48:42,701     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-25 20:51:19,148     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:51:19,150     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:51:19,151     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:51:19,152     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53525), raddr=('127.0.0.1', 5777)>, {'event': 'presence', 'time': 1632592279.150712, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:51:20,153     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 53525), raddr=('127.0.0.1', 5777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:51:20,153     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-25 20:51:20,153     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:51:20,153     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-25 20:53:45,877     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:53:45,880     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:53:45,880     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:53:45,881     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=564, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59416), raddr=('127.0.0.1', 5777)>, {'event': 'presence', 'time': 1632592425.880832, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:53:46,881     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=564, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59416), raddr=('127.0.0.1', 5777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:53:46,882     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-25 20:53:46,882     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:53:46,882     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-25 20:54:51,269     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:54:51,269     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1, порт: 5777, режим работы: listen
+2021-09-25 20:54:51,270     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:54:51,271     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:54:51,272     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=508, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61590), raddr=('127.0.0.1', 5777)>, {'event': 'presence', 'time': 1632592491.2703447, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:54:52,273     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=508, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 61590), raddr=('127.0.0.1', 5777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:54:52,273     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-25 20:54:52,273     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:54:52,273     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-25 20:55:19,770     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:55:19,770     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 5777, режим работы: listen
+2021-09-25 20:55:19,771     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-25 20:55:19,772     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:55:19,773     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50589), raddr=('127.0.0.1', 5777)>, {'event': 'presence', 'time': 1632592519.771595, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:55:20,775     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=460, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 50589), raddr=('127.0.0.1', 5777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-25 20:55:20,775     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-25 20:55:20,775     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-25 20:55:20,776     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
