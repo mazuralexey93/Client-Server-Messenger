@@ -6,12 +6,14 @@ import logs.configs.server_log_config
 
 from common.vars import *
 from common.utils import *
+from custom_decorators import log
 from errors import IncorrectDataRecievedError
 
 #  Создаем Logger с настроенным конфигом
 Server_logger = logging.getLogger('server')
 
 
+@log
 def proc_client_message(message):
     """
     Обрабатывает сообщения от клиента
@@ -34,6 +36,7 @@ def proc_client_message(message):
         }
 
 
+@log
 def create_arg_parser():
     """
     парсер аргументов коммандной строки, для разбора переданных параметров
@@ -63,7 +66,7 @@ def main():
                                f'Диапазон адресов от 1024 до 65535. Подключение завершается...')
         sys.exit(1)
 
-    Server_logger.info('fЗапущен сервер с парамертами: '
+    Server_logger.info(f'Запущен сервер с парамертами: '
                        f' порт: {listen_port}, адрес для приема подключений: {listen_address}./'
                        f'Если адрес не указан, принимаются подключения со всех доступных адресов.')
 

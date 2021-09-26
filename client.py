@@ -9,11 +9,13 @@ import logs.configs.client_log_config
 from common.vars import *
 from common.utils import *
 from errors import ReqFieldMissingError
+from custom_decorators import log, Log
 
 #  Создаем Logger с настроенным конфигом
 Client_logger = logging.getLogger('client')
 
 
+@Log()
 def declare_presence(account_name='Guest'):
     """
     Генерирует запрос о присутствии клиента Oneline
@@ -35,6 +37,7 @@ def declare_presence(account_name='Guest'):
     return client_data
 
 
+@Log()
 def proc_answer(message):
     """
     Обрабатывает сообщения от сервера
@@ -52,6 +55,7 @@ def proc_answer(message):
     raise ReqFieldMissingError(RESPONSE)
 
 
+@Log()
 def create_arg_parser():
     """
     парсер аргументов коммандной строки, для разбора переданных параметров
@@ -81,7 +85,7 @@ def main():
                                f'Диапазон адресов от 1024 до 65535. Подключение завершается...')
         sys.exit(1)
 
-    Client_logger.info('fЗапущен клиент с парамертами: '
+    Client_logger.info(f'Запущен клиент с парамертами: '
                        f'адрес сервера: {server_address}, порт: {server_port}')
 
     """
