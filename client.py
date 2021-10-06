@@ -34,15 +34,17 @@ def create_exit_message(account_name):
     }
 
 
-##!
 @log
 def message_from_server(message, my_username):
     """ Функция, обрабатывающая сообщения других пользователей"""
     while True:
         try:
-            if EVENT in message and message[EVENT] == MESSAGE \
-                    and SENDER in message and DESTINATION in message \
-                    and MESSAGE_TEXT and  message[DESTINATION] == my_username:
+            if EVENT in message \
+                    and message[EVENT] == MESSAGE \
+                    and SENDER in message \
+                    and DESTINATION in message \
+                    and MESSAGE_TEXT in message \
+                    and message[DESTINATION] == my_username:
                 print((f'\nПолучено сообщение от пользователя '
                        f'{message[SENDER]}: '
                        f'\n{message[MESSAGE_TEXT]}'))
@@ -185,7 +187,7 @@ def main():
     try:
         transport_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         transport_socket.connect((server_address, server_port))
-        send_message(transport_socket,  declare_presence(client_name))
+        send_message(transport_socket, declare_presence(client_name))
         answer = proc_answer(get_message(transport_socket))
         Client_logger.info(f'Установлено собединение. Принят ответ от сервера {answer}')
         print(f'Установлено соединение с сервером.')
@@ -223,6 +225,7 @@ def main():
             if receiver.is_alive() and client_interface.is_alive():
                 continue
             break
+
 
 if __name__ == '__main__':
     main()
