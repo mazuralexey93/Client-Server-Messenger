@@ -17,9 +17,19 @@ EVENT = 'event'
 TIME = 'time'
 USER = 'user'
 ACCOUNT_NAME = 'account_name'
+SENDER = 'from'
+DESTINATION = 'to'
+
 PRESENCE = 'presence'
 RESPONSE = 'response'
 ERROR = 'error'
-SENDER = 'sender'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'message_text'
+EXIT = 'exit'
+
+"""  Словари - ответы: """
+RESPONSE_200 = {RESPONSE: 200}
+RESPONSE_400 = {
+    RESPONSE: 400,
+    ERROR: None
+}

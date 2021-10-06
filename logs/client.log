@@ -1600,3 +1600,70 @@ dressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 5
 2021-09-26 00:09:45,354     INFO         client.py                Получено сообщение от пользователя Guest: я один
 2021-09-26 00:09:45,355     DEBUG        client.py                Вызвана функция message_from_server c параметрами ({'event': 'message', 'sender': 'Guest', 'time': 1632604185.332602, 'message_text': 'я один'},), {}. Вызов из модуля __main__. Вызов из функции main
 2021-09-26 00:09:48,650     DEBUG        client.py                Клиент завершил работу по команде "exit"...
+2021-09-26 00:17:35,299     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,300     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,300     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: listen
+2021-09-26 00:17:35,301     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: listen
+2021-09-26 00:17:35,302     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,303     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: send
+2021-09-26 00:17:35,325     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,326     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: send
+2021-09-26 00:17:35,374     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,375     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: listen
+2021-09-26 00:17:35,376     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,380     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,382     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56076), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.3763108, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,392     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,393     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: listen
+2021-09-26 00:17:35,396     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,397     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,405     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56077), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.3963082, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,411     DEBUG        client.py                Вызвана функция create_arg_parser c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,412     INFO         client.py                Запущен клиент с парамертами: адрес сервера: 127.0.0.1,  порт: 6777, режим работы: listen
+2021-09-26 00:17:35,420     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,423     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,424     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56078), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.4203362, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,443     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=468, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56076), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,444     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,446     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,446     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,522     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56077), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,522     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,524     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,525     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,626     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=376, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56078), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,626     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,627     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,628     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,803     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,803     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,804     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,804     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,805     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=384, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56073), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.803312, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,805     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=500, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56072), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.803312, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,808     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,810     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,814     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56074), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.8083127, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,829     DEBUG        client.py                Пользователь Guest теперь онлайн: отправил сообщение о(presence)
+2021-09-26 00:17:35,831     DEBUG        client.py                Вызвана функция declare_presence c параметрами (), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,832     DEBUG        client.py                Вызвана функция send_message c параметрами (<socket.socket fd=380, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56075), raddr=('127.0.0.1', 6777)>, {'event': 'presence', 'time': 1632604655.8293438, 'user': {'account_name': 'Guest'}}), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,836     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=384, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56073), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,836     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,837     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,837     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,886     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=500, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56072), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,886     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,887     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,887     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,931     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=464, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56074), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,931     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,932     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,932     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:17:35,980     DEBUG        client.py                Вызвана функция get_message c параметрами (<socket.socket fd=380, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 56075), raddr=('127.0.0.1', 6777)>,), {}. Вызов из модуля common.utils. Вызов из функции main
+2021-09-26 00:17:35,980     DEBUG        client.py                Обработка сообщения от сервера: {'response': 200}
+2021-09-26 00:17:35,981     DEBUG        client.py                Вызвана функция proc_answer c параметрами ({'response': 200},), {}. Вызов из модуля __main__. Вызов из функции main
+2021-09-26 00:17:35,981     INFO         client.py                Установлено собединение. Принят ответ от сервера 200 : OK
+2021-09-26 00:20:39,234     ERROR        client.py                Соединение с сервером 127.0.0.1 было потеряно.
+2021-09-26 00:20:39,234     ERROR        client.py                Соединение с сервером 127.0.0.1 было потеряно.
+2021-09-26 00:20:39,234     ERROR        client.py                Соединение с сервером 127.0.0.1 было потеряно.
+2021-09-26 00:20:39,234     ERROR        client.py                Соединение с сервером 127.0.0.1 было потеряно.
