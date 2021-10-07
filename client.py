@@ -35,21 +35,20 @@ def create_exit_message(account_name):
 
 
 @log
-def message_from_server(message, my_username):
+def message_from_server(sock, my_username):
     """ Функция, обрабатывающая сообщения других пользователей"""
     while True:
         try:
+            message = get_message(sock)
             if EVENT in message \
                     and message[EVENT] == MESSAGE \
                     and SENDER in message \
                     and DESTINATION in message \
                     and MESSAGE_TEXT in message \
                     and message[DESTINATION] == my_username:
-                print((f'\nПолучено сообщение от пользователя '
-                       f'{message[SENDER]}: '
-                       f'\n{message[MESSAGE_TEXT]}'))
-                Client_logger.info(f'Получено сообщение от пользователя '
-                                   f'{message[SENDER]}: '
+                print(f'\nПолучено сообщение от пользователя {message[SENDER]}: '
+                      f'\n {message[MESSAGE_TEXT]}')
+                Client_logger.info(f'Получено сообщение от пользователя {message[SENDER]}:'
                                    f'\n{message[MESSAGE_TEXT]}')
             else:
                 Client_logger.error(f'Получено некорректное сообщение от сервера: {message}')
@@ -146,7 +145,17 @@ def create_arg_parser():
     parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
     parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
     parser.add_argument('-n', '--name', default='None', nargs='?')
-    return parser
+    namespace = parser.parse_args(sys.argv[1:])
+    server_address = namespace.addr
+    server_port = namespace.port
+    client_name = namespace.name
+
+    if server_port < 1024 or server_port > 65535:
+        Client_logger.critical(f'Клиент пытается подключиться с недопустимого номера порта: {server_port}.'
+                               f'Диапазон адресов от 1024 до 65535. Подключение завершается...')
+        sys.exit(1)
+
+    return server_address, server_port, client_name
 
 
 def main():
@@ -157,16 +166,7 @@ def main():
      Проверяем параметры, при успешной попытке, равно как и при ошибке, пишем в логгер
     :return:
     """
-    parser = create_arg_parser()
-    namespace = parser.parse_args(sys.argv[1:])
-    server_address = namespace.addr
-    server_port = namespace.port
-    client_name = namespace.name
-
-    if server_port < 1024 or server_port > 65535:
-        Client_logger.critical(f'Клиент пытается подключиться с недопустимого номера порта: {server_port}.'
-                               f'Диапазон адресов от 1024 до 65535. Подключение завершается...')
-        sys.exit(1)
+    server_address, server_port, client_name = create_arg_parser()
 
     if not client_name:
         client_name = input('Введите имя пользователя: ')
@@ -201,7 +201,7 @@ def main():
         Client_logger.error(f'В ответе сервера отсутствует необходимое поле: '
                             f'{missing_field_error.missing_field}')
         sys.exit(1)
-    except ConnectionRefusedError:
+    except (ConnectionRefusedError, ConnectionError):
         Client_logger.critical(f'Не удалось подключиться к серверу {server_address}:{server_port}, '
                                f'В подключении отказано.')
         sys.exit(1)
