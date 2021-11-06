@@ -172,15 +172,6 @@ def main():
                     clients.remove(message_from_client)
 
         """Если есть сообщения, обрабатываем"""
-        # for i in messages:
-        #     try:
-        #         proc_message(i, names, send_lst)
-        #     except Exception:
-        #         Server_logger.info(f'Связь с клиентом с именем {i[DESTINATION]} была потеряна')
-        #         clients.remove(names[i[DESTINATION]])
-        #         del names[i[DESTINATION]]
-        # messages.clear()
-
         for i in messages:
             try:
                 proc_message(i, names, send_lst)
@@ -189,7 +180,6 @@ def main():
                 no_user_dict = RESPONSE_400
                 no_user_dict[ERROR] = f'Пользователь {i[DESTINATION]} отклчился от сервера.'
                 send_message(names[i[SENDER]], no_user_dict)
-                # clients.remove(names[i[DESTINATION]])
                 del names[i[DESTINATION]]
         messages.clear()
 
