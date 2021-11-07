@@ -67,13 +67,6 @@ class BaseClient(metaclass=ClientVerifierMeta):
         self.transport_socket = ''
 
     def start_client(self):
-        """
-            Применяем параметры для клиента аналогично серверу
-             Наример, client.py -a 192.168.0.1 -p 8008 -n client1
-             Подгружаем параметры командной строки из парсера
-             Проверяем параметры, при успешной попытке, равно как и при ошибке, пишем в логгер
-            :return:
-            """
         server_address, server_port, client_name = create_arg_parser()
 
         if not client_name:

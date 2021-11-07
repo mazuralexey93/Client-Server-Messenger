@@ -72,7 +72,7 @@ class PortVerifyDescriptor:
                 raise ValueError(f'Port should be an integer >= 0, <= 65535')
         except ValueError as e:
             print(f'Error {e}')
-        setattr(instance,  value)
+        setattr(instance, value)
 
 
 class BaseServer(metaclass=ServerVerifierMeta):
@@ -82,7 +82,14 @@ class BaseServer(metaclass=ServerVerifierMeta):
         self.server_logger = logging.getLogger('server')
         self.transport_socket = ''
 
-    def start(self, address=DEFAULT_IP_ADDRESS):
+    def start_server(self, address=DEFAULT_IP_ADDRESS):
+        listen_address, listen_port = create_arg_parser()
+
+        self.server_logger.info(f'Запущен сервер с парамертами: '
+                                f' порт: {listen_port}, адрес для приема подключений: {listen_address}./'
+                                f'Если адрес не указан, принимаются подключения со всех доступных адресов.')
+
+        # клиентов, подключившихся к серверу, будем добавлять в список, сообщения от клиентов в очередь
         clients = []
         messages = []
         # списки для модуля select
@@ -100,6 +107,7 @@ class BaseServer(metaclass=ServerVerifierMeta):
         while True:
             try:
                 client, client_address = self.transport_socket.accept()
+                self.server_logger.info(f'Соедениние с клиентом {client_address} установлено.')
             except OSError:
                 pass
             else:
@@ -122,6 +130,8 @@ class BaseServer(metaclass=ServerVerifierMeta):
                         proc_client_message(get_message(message_from_client),
                                             messages, message_from_client, clients, names)
                     except:
+                        self.server_logger.info(f'Клиент {message_from_client.getpeername()} '
+                                           f' отключился от сервера.')
                         clients.remove(message_from_client)
 
             """Если есть сообщения, обрабатываем"""
@@ -129,6 +139,7 @@ class BaseServer(metaclass=ServerVerifierMeta):
                 try:
                     proc_message(i, names, send_lst)
                 except Exception as e:
+                    self.server_logger.info(f'Связь с клиентом с именем {i[DESTINATION]} была потеряна')
                     no_user_dict = RESPONSE_400
                     no_user_dict[ERROR] = f'Пользователь {i[DESTINATION]} отклчился от сервера.'
                     send_message(names[i[SENDER]], no_user_dict)
@@ -222,4 +233,4 @@ def create_arg_parser():
 
 if __name__ == '__main__':
     server = ConcreteServer()
-    server.start()
+    server.start_server()
