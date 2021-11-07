@@ -79,11 +79,10 @@ class BaseServer(metaclass=ServerVerifierMeta):
     port = PortVerifyDescriptor()
 
     def __init__(self):
-        #  Создаем Logger с настроенным конфигом
         self.server_logger = logging.getLogger('server')
         self.transport_socket = ''
 
-    def start(self, address=common.vars.DEFAULT_IP_ADDRESS):
+    def start(self, address=DEFAULT_IP_ADDRESS):
         clients = []
         messages = []
         # списки для модуля select
@@ -218,86 +217,7 @@ def create_arg_parser():
     namespace = parser.parse_args(sys.argv[1:])
     listen_address = namespace.a
     listen_port = namespace.p
-
-    if listen_port < 1024 or listen_port > 65535:
-        sys.exit(1)
-
     return listen_address, listen_port
-
-
-# def main():
-#     """
-#     явно указывать порт и ip-адрес можно используя параметры -p и -a
-#      Наример, server.py  -a 192.168.0.1 -p 8008
-#      В ином случае, будут использоваться DEFAULT_PORT и DEFAULT_IP_ADDRESS
-#     """
-#     listen_address, listen_port = create_arg_parser()
-#
-#     Server_logger.info(f'Запущен сервер с парамертами: '
-#                        f' порт: {listen_port}, адрес для приема подключений: {listen_address}./'
-#                        f'Если адрес не указан, принимаются подключения со всех доступных адресов.')
-#
-#     # клиентов, подключившихся к серверу, будем добавлять в список, сообщения от клиентов в очередь
-#     clients = []
-#     messages = []
-#
-#     # словарь, содержащий имена клиентов и их сокеты
-#     names = dict()
-#
-#     #  Сокет
-#     transport_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#     transport_socket.bind((listen_address, listen_port))
-#     transport_socket.settimeout(1)
-#     # Слушаем порт
-#     transport_socket.listen(MAX_CONNECTIONS)
-#
-#     """ Ждем подключения, если успешно, пишем в лог, добавляем клиента в список. """
-#     while True:
-#         try:
-#             client, client_address = transport_socket.accept()
-#         except OSError:
-#             pass
-#         else:
-#             Server_logger.info(f'Соедениние с клиентом {client_address} установлено.')
-#             clients.append(client)
-#
-#         # списки для модуля select
-#         recv_lst = []
-#         send_lst = []
-#         err_lst = []
-#
-#         """ Проверяем наличие ждущих клиентов. """
-#         try:
-#             if clients:
-#                 recv_lst, send_lst, err_lst = select.select(clients, clients, [], 0)
-#         except OSError:
-#             pass
-#
-#         """ Принимаем сообщения
-#             Если есть, добавляем в словарь
-#             Если ошибка, исключаем клиента  """
-#
-#         if recv_lst:
-#             for message_from_client in recv_lst:
-#                 try:
-#                     proc_client_message(get_message(message_from_client),
-#                                         messages, message_from_client, clients, names)
-#                 except:
-#                     Server_logger.info(f'Клиент {message_from_client.getpeername()} '
-#                                        f' отключился от сервера.')
-#                     clients.remove(message_from_client)
-#
-#         """Если есть сообщения, обрабатываем"""
-#         for i in messages:
-#             try:
-#                 proc_message(i, names, send_lst)
-#             except Exception:
-#                 Server_logger.info(f'Связь с клиентом с именем {i[DESTINATION]} была потеряна')
-#                 no_user_dict = RESPONSE_400
-#                 no_user_dict[ERROR] = f'Пользователь {i[DESTINATION]} отклчился от сервера.'
-#                 send_message(names[i[SENDER]], no_user_dict)
-#                 del names[i[DESTINATION]]
-#         messages.clear()
 
 
 if __name__ == '__main__':
