@@ -1,13 +1,9 @@
-import ipaddress
-from sqlalchemy import create_engine, DateTime
+from sqlalchemy import create_engine, DateTime, func
 from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
-# from sqlalchemy.sql import func
-# time_created = Column(DateTime(timezone=True), server_default=func.now())
-# time_updated = Column(DateTime(timezone=True), onupdate=func.now())
 
-engine = create_engine('sqlite:///:memory:', echo=True)
+engine = create_engine('sqlite:///:my_db:', echo=True)
 pool_recycle = 7200
 
 Base = declarative_base()
@@ -30,7 +26,8 @@ class Client(Base):
 class ClientHistory(Base):
     __tablename__ = 'history'
     id = Column(Integer, primary_key=True)
-    time = Column(DateTime)
+    # time_created = Column(DateTime(timezone=True), server_default=func.now())
+    time_updated = Column(DateTime(timezone=True), onupdate=func.now())
     ip = Column(Integer)
 
     def __init__(self, time, info):
@@ -53,9 +50,15 @@ class Contacts(Base):
         return f"<Contacts client_id: '{self.client_id}'>"
 
 
-# client = Client("client1", "client 1 info")
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
+session = Session()
+
+client = Client("client1", "info 1")
+session.add(client)
+session.commit()
+
 # print(client)
 # print(client.id)
-clients_table = Client.__table__
-metadata = Base.metadata
-print(clients_table, metadata)
+query = session.query(Client).first()
+print(query)
