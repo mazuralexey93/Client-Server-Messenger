@@ -12,7 +12,7 @@ import logs.configs.server_log_config
 from common.vars import *
 from common.utils import *
 from custom_decorators import log
-from errors import IncorrectDataRecievedError
+from errors import IncorrectDataReceivedError
 
 
 class ServerVerifierMeta(type):
