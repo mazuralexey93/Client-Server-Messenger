@@ -12,7 +12,9 @@ import logs.configs.server_log_config
 from common.vars import *
 from common.utils import *
 from custom_decorators import log
+from db_conf import ServerDB
 from errors import IncorrectDataReceivedError
+from models import Base
 
 
 class ServerVerifierMeta(type):
@@ -131,7 +133,7 @@ class BaseServer(metaclass=ServerVerifierMeta):
                                             messages, message_from_client, clients, names)
                     except:
                         self.server_logger.info(f'Клиент {message_from_client.getpeername()} '
-                                           f' отключился от сервера.')
+                                                f' отключился от сервера.')
                         clients.remove(message_from_client)
 
             """Если есть сообщения, обрабатываем"""
@@ -145,6 +147,12 @@ class BaseServer(metaclass=ServerVerifierMeta):
                     send_message(names[i[SENDER]], no_user_dict)
                     del names[i[DESTINATION]]
             messages.clear()
+
+    def init_db(self):
+        db_name = DB_NAME
+        self.db = ServerDB(Base, db_name)
+        self.db.load()
+        print(self.db.engine)
 
 
 class ConcreteServer(BaseServer):

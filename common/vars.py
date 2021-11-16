@@ -26,6 +26,7 @@ ERROR = 'error'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'message_text'
 EXIT = 'exit'
+DB_NAME = 'db.sqlite'
 
 """  Словари - ответы: """
 RESPONSE_200 = {RESPONSE: 200}

@@ -8,8 +8,9 @@ from errors import ServerDBError
 
 class ServerDB:
 
-    def __init__(self, base):
-        self.engine = create_engine('sqlite:///db.sqlite', echo=True)
+    def __init__(self, base, db_name=None):
+        self.db_name = f'sqlite:///{db_name}'
+        self.engine = create_engine(db_name, echo=True)
         self.base = base
         self.session = None
 
