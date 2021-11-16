@@ -3,13 +3,18 @@ import inspect
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+from common.vars import DB_NAME
 from errors import ServerDBError
 
 
 class ServerDB:
 
     def __init__(self, base, db_name=None):
-        self.db_name = f'sqlite:///{db_name}'
+        if not db_name:
+            db_name = 'sqlite:///:memory:'
+        else:
+            db_name = f'sqlite:///{DB_NAME}'
+
         self.engine = create_engine(db_name, echo=True)
         self.base = base
         self.session = None

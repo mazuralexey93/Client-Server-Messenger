@@ -241,4 +241,6 @@ def create_arg_parser():
 
 if __name__ == '__main__':
     server = ConcreteServer()
+    server.init_db()
     server.start_server()
+
