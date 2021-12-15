@@ -1,7 +1,7 @@
 import json
 from common.vars import *
 from custom_decorators import log
-from errors import NonDictInputError, IncorrectDataRecievedError
+from errors import NonDictInputError, IncorrectDataReceivedError
 
 """
 Общие функции для клиента и для сервера
@@ -25,8 +25,8 @@ def get_message(sock):
         response = json.loads(json_response)
         if isinstance(response, dict):
             return response
-        raise IncorrectDataRecievedError
-    raise IncorrectDataRecievedError
+        raise IncorrectDataReceivedError
+    raise IncorrectDataReceivedError
 
 
 @log

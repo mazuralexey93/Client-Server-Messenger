@@ -168,7 +168,7 @@ def message_from_server(sock, my_username):
                                    f'\n{message[MESSAGE_TEXT]}')
             else:
                 Client_logger.error(f'Получено некорректное сообщение от сервера: {message}')
-        except IncorrectDataRecievedError:
+        except IncorrectDataReceivedError:
             Client_logger.error(f'Не удалось декодировать полученное сообщение.'
                                 f' $%@^D!!**! <3')
         except (OSError, ConnectionError, ConnectionAbortedError,
